@@ -1,4 +1,4 @@
 .DS_Store
 *.sw?
-node_moudles/
+node_modules/
 bower_components/
