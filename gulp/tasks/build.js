@@ -43,7 +43,9 @@ function buildTemplates () {
 }
 
 function buildVendor () {
-    return gulp.src(bowerFiles())
+  return gulp.src(bowerFiles({
+      filter: /.*\.js$/,
+    }))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(config.paths.dest))
 }
