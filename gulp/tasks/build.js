@@ -12,6 +12,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var bowerFiles = require('main-bower-files');
+var annotate = require('gulp-ng-annotate');
 
 // templates dependencies
 var html2js = require('gulp-ng-html2js');
@@ -63,6 +64,7 @@ function buildApp () {
   .bundle()
   .on('error', console.error)
   .pipe(source('application.js'))
+  .pipe(annotate())
   .pipe(gulp.dest(config.paths.dest));
 }
 
