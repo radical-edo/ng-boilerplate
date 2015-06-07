@@ -1,16 +1,22 @@
 'use strict';
 
+// general dependencies
 var gulp = require('gulp');
 var config = require('../config');
+var concat = require('gulp-concat');
 var inject = require('gulp-inject');
+var _ = require('lodash');
+
+// js dependencies
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var bowerFiles = require('main-bower-files');
-var concat = require('gulp-concat');
-var _ = require('lodash');
+
+// templates dependencies
 var html2js = require('gulp-ng-html2js');
 
+// scss dependencies
 var sass = require('gulp-sass');
 
 function buildStyles() {
