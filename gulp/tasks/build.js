@@ -6,12 +6,12 @@ var config = require('../config');
 var concat = require('gulp-concat');
 var inject = require('gulp-inject');
 var _ = require('lodash');
+var bowerFiles = require('main-bower-files');
 
 // js dependencies
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
-var bowerFiles = require('main-bower-files');
 var annotate = require('gulp-ng-annotate');
 
 // templates dependencies
