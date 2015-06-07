@@ -3,5 +3,6 @@ module.exports = {
     js: 'source/js/application.js',
     index: 'source/index.html',
     dest: 'build',
+    templates: 'source/js/**/*.html',
   },
 };
