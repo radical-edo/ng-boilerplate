@@ -11,6 +11,14 @@ var concat = require('gulp-concat');
 var _ = require('lodash');
 var html2js = require('gulp-ng-html2js');
 
+var sass = require('gulp-sass');
+
+function buildStyles() {
+  return gulp.src(config.paths.scss)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(config.paths.dest));
+}
+
 function buildTemplates () {
   return gulp.src(config.paths.templates)
     .pipe(html2js({
@@ -44,8 +52,9 @@ var INJECT_OPTIONS = {
 
 module.exports = function() {
   return gulp.src(config.paths.index)
-      .pipe(inject(buildVendor(), _.merge({ name: 'vendor'}, INJECT_OPTIONS)))
-      .pipe(inject(buildTemplates(), _.merge({ name: 'templates' }, INJECT_OPTIONS)))
-      .pipe(inject(buildApp(), INJECT_OPTIONS))
-      .pipe(gulp.dest(config.paths.dest));
+    .pipe(inject(buildStyles(), INJECT_OPTIONS))
+    .pipe(inject(buildVendor(), _.merge({ name: 'vendor'}, INJECT_OPTIONS)))
+    .pipe(inject(buildTemplates(), _.merge({ name: 'templates' }, INJECT_OPTIONS)))
+    .pipe(inject(buildApp(), INJECT_OPTIONS))
+    .pipe(gulp.dest(config.paths.dest));
 };

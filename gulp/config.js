@@ -4,5 +4,6 @@ module.exports = {
     index: 'source/index.html',
     dest: 'build',
     templates: 'source/js/**/*.html',
+    scss: 'source/styles/application.scss',
   },
 };
