@@ -1,13 +1,19 @@
 {
-  "name": "boilerplate",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "ng-boilerplate",
+  "version": "0.1.0",
+  "description": "Gulp, karma setup for developing SPA with angular",
   "scripts": {
     "start": "bin/start",
     "test": "bin/test"
   },
-  "author": "",
+  "authors": [{
+    "email": "radical.3do@gmail.com",
+    "name": "Mateusz Barczak",
+    "alias": "radical-edo"
+  }],
+  "repository" : {
+    "url": "https://github.com/radical-edo/ng-boilerplate"
+  },
   "license": "ISC",
   "dependencies": {
     "babelify": "^6.1.2",
