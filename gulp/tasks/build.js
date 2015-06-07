@@ -64,7 +64,14 @@ function buildApp () {
   .bundle()
   .on('error', console.error)
   .pipe(source('application.js'))
-  .pipe(annotate())
+  .pipe(annotate({
+    add: true,
+    remove: true,
+    single_quotes: true,
+  }).on('error', function (err) {
+    sass.logError(err.toString());
+    this.emit('end');
+  }))
   .pipe(gulp.dest(config.paths.dest));
 }
 
