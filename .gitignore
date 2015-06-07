@@ -1,0 +1,4 @@
+.DS_Store
+*.sw?
+node_moudles/
+bower_components/
