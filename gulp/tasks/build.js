@@ -19,6 +19,14 @@ var html2js = require('gulp-ng-html2js');
 // scss dependencies
 var sass = require('gulp-sass');
 
+function buildStylesVendor() {
+  return gulp.src(bowerFiles({
+      filter: /.*\.css$/,
+    }))
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest(config.paths.dest));
+}
+
 function buildStyles() {
   return gulp.src(config.paths.scss)
     .pipe(sass().on('error', sass.logError))
@@ -58,6 +66,7 @@ var INJECT_OPTIONS = {
 
 module.exports = function() {
   return gulp.src(config.paths.index)
+    .pipe(inject(buildStylesVendor(), _.merge({ name: 'vendor' }, INJECT_OPTIONS)))
     .pipe(inject(buildStyles(), INJECT_OPTIONS))
     .pipe(inject(buildVendor(), _.merge({ name: 'vendor'}, INJECT_OPTIONS)))
     .pipe(inject(buildTemplates(), _.merge({ name: 'templates' }, INJECT_OPTIONS)))
